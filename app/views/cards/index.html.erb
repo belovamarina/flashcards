@@ -1,0 +1,20 @@
+<div class="container">
+  <% @cards.each do |card| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= card.original_text %></h3>
+        <small><%= card.review_date.strftime('%d/%m/%Y') %></small>
+      </div>
+      <div class="panel-body">
+        <%= card.translated_text %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      Всего карточек: <%= Card.all.count %>
+    </div>
+  </div>
+</div>
