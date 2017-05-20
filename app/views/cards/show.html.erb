@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @card.original_text %></h3>
+      <small><%= @card.review_date.strftime('%d/%m/%Y') %></small>
+    </div>
+    <div class="panel-body">
+      <%= @card.translated_text %>
+    </div>
+  </div>
+  <%= link_to 'Изменить', edit_card_path(@card) %> |
+  <%= link_to 'Удалить', @card, method: :delete, data: { confirm: 'Точно удалить?' } %>
+</div>
