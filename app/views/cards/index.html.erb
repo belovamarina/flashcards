@@ -2,7 +2,7 @@
   <% @cards.each do |card| %>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= card.original_text %></h3>
+        <h3 class="panel-title"><%= link_to card.original_text, card_path(card) %></h3>
         <small><%= card.review_date.strftime('%d/%m/%Y') %></small>
       </div>
       <div class="panel-body">

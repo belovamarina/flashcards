@@ -1,0 +1,6 @@
+<%= simple_form_for card, html: { class: 'form-group'} do |f| %>
+    <%= f.input :original_text, label: 'Оригинальный текст', input_html: { class: 'form-control' } %>
+    <%= f.input :translated_text, label: 'Перевод', input_html: { class: 'form-control' } %>
+    <%= f.input :review_date, as: :date, label: 'Дата пересмотра', selected: Date.today + 3.days %>
+    <%= f.button :submit, card.new_record? ? 'Создать' : 'Изменить' %>
+<% end %>
