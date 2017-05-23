@@ -5,7 +5,8 @@ class Card < ApplicationRecord
   scope :needed_to_review, -> { where('review_date <= ?', Date.today) }
 
   def correct_translate?(word)
-    word.strip.casecmp(original_text.strip).zero?
+    return unless word.strip.casecmp(original_text.strip).zero?
+    update(review_date: 3.days.from_now)
   end
 
   private

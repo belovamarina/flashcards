@@ -41,7 +41,6 @@ class CardsController < ApplicationController
     card = Card.find(card_params[:card_id])
 
     if card.correct_translate?(card_params[:original_text])
-      card.update(review_date: 3.days.from_now)
       redirect_to card_path(card), notice: 'Правильно'
     else
       redirect_to root_path, alert: 'Неправильно'
