@@ -1,3 +1,9 @@
+AllCops:
+  Rails:
+    Enabled: true
+  Excludes:
+    - db/**
+    - config/**/**
 Metrics/LineLength:
   Enabled: false
 Style/StringLiterals:
@@ -6,6 +12,3 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Documentation:
   Enabled: false
-Excludes:
-  - db/**
-  - config/**
