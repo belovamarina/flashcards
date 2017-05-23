@@ -37,6 +37,16 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def check_card
+    card = Card.find(card_params[:card_id])
+
+    if card.correct_translate?(card_params[:original_text])
+      redirect_to card_path(card), notice: 'Правильно'
+    else
+      redirect_to root_path, alert: 'Неправильно'
+    end
+  end
+
   private
 
   def set_card
@@ -44,6 +54,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :card_id)
   end
 end
