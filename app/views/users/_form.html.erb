@@ -1,0 +1,6 @@
+<%= simple_form_for user, html: { class: 'form-group'} do |f| %>
+    <%= f.input :email, as: :email, label: 'Ваша почта', input_html: { class: 'form-control' } %>
+    <%= f.input :password, as: :password, label: 'Введите пароль', input_html: { class: 'form-control' } %>
+    <%= f.input :password_confirmation, as: :password, label: 'И еще раз', input_html: { class: 'form-control' } %>
+    <%= f.button :submit, user.new_record? ? 'Создать' : 'Изменить' %>
+<% end %>
