@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  authenticates_with_sorcery!
+  authenticates_with_sorcery! do |config|
+    config.authentications_class = Authentication
+  end
+
   validates :email, presence: { message: "Поле %{attribute} должно быть заполнено." }
   validates_format_of :email, with: /\A[^@\s]+@[^@\s]+\z/, message: "%{value} -- неправильный формат email"
 
@@ -10,4 +13,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_many :cards, dependent: :destroy
+
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
 end

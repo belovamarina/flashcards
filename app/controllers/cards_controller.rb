@@ -1,14 +1,13 @@
 class CardsController < ApplicationController
   before_action :require_login
-  before_action :set_card, :check_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_card, :check_user, only: %i[show edit update destroy]
 
   def index
     @cards = current_user.cards
     @count = @cards.count
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @card = Card.new
@@ -24,8 +23,7 @@ class CardsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @card.update(card_params)
@@ -61,8 +59,7 @@ class CardsController < ApplicationController
   end
 
   def check_user
-    unless current_user == @card.user
-      render status: :forbidden, plain: 'Вам сюда нельзя'
-    end
+    return if current_user == @card.user
+    render status: :forbidden, plain: 'Вам сюда нельзя'
   end
 end

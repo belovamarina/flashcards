@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'dotenv-rails'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'launchy'
   gem 'pry'
@@ -58,4 +59,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

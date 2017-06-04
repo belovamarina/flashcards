@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, :check_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, :check_user, only: %i[show edit update destroy]
 
-  def index
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
 
   def new
     @user = User.new
@@ -14,15 +12,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      login(user_params[:email], user_params[:password])
+      auto_login(@user)
       redirect_to @user
     else
       render :new
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
