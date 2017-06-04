@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature 'User Authentication', type: :feature do
-  scenario 'anonim dont see card test'  do
+  scenario 'anonym dont see card test' do
     visit root_path
     text = page.all(:xpath, "//h3[@class='panel-title']").map(&:text)
     expect(text).to be_empty
   end
 
-  scenario 'anonim cant create or see cards' do
+  scenario 'anonym cant create or see cards' do
     [cards_path, new_card_path].each do |path|
       visit path
       expect(page.current_path).to eq login_path
@@ -16,7 +16,7 @@ RSpec.feature 'User Authentication', type: :feature do
 
   scenario 'user cant edit another user cards' do
     user = create(:user_with_cards)
-    another_user = login_user(create(:user_with_cards))
+    login_user(create(:user_with_cards))
     [edit_card_path(user.cards.first), card_path(user.cards.last)].each do |path|
       visit path
       expect(page).to have_content 'Вам сюда нельзя'
