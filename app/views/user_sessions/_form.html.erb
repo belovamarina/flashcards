@@ -1,0 +1,5 @@
+<%= simple_form_for '', { url: user_sessions_path, class: 'form-group' } do |f| %>
+    <%= f.input :email, as: :email, label: 'Ваша почта', input_html: { class: 'form-control' } %>
+    <%= f.input :password, as: :password, label: 'Пароль', input_html: { class: 'form-control' } %>
+    <%= f.button :submit, 'Войти' %>
+<% end %>

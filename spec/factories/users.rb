@@ -1,7 +1,14 @@
 FactoryGirl.define do
+  sequence :email do |n|
+    "person#{n}@example.com"
+  end
+
   factory :user do
-    email 'user1@example.com'
-    password 'testpassword'
+    email
+    password 'secret'
+    password_confirmation 'secret'
+    salt { salt = 'asdasdastr4325234324sdfds' }
+    crypted_password { Sorcery::CryptoProviders::BCrypt.encrypt('secret', salt) }
 
     factory :user_with_cards do
       transient { cards_count 5 }
@@ -14,6 +21,7 @@ FactoryGirl.define do
 
   factory :bad_user, class: User do
     email 'abcd'
-    password ''
+    password '1234'
+    password_confirmation ''
   end
 end

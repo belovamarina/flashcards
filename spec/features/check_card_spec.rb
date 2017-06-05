@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Card check', type: :feature do
-  let!(:card) { create(:card) }
-  let!(:card2) { create(:card, original_text: 'cat', translated_text: 'кошка') }
-  let!(:card3) { create(:card, original_text: 'Dog', translated_text: 'Собака') }
+  let!(:user) { login_user(create(:user_with_cards)) }
 
   scenario 'user see random card on home page' do
     visit root_path
