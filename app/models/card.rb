@@ -2,6 +2,8 @@ class Card < ApplicationRecord
   validates :original_text, :translated_text, :review_date, presence: true
   validate :text_uniqueness
 
+  mount_uploader :image, ImageUploader
+
   belongs_to :user
 
   scope :needed_to_review, -> { where('review_date <= ?', Date.today) }
