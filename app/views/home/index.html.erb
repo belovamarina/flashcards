@@ -7,11 +7,15 @@
     </p>
   </section>
 
+  <div class="row">
   <% if @random_card.present? %>
-    <div class="container">
+    <div class="container col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title"><%= @random_card.translated_text %></h3>
+        </div>
+        <div class="panel-body">
+          <%= image_tag(@random_card.image.url, class: 'img-thumbnail') if @random_card.image? %>
         </div>
       </div>
       <%= simple_form_for :card, { url: '/check_card' } do |f| %>
@@ -21,4 +25,5 @@
       <% end %>
     </div>
   <% end %>
+  </div>
 </section>

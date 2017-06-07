@@ -1,7 +1,5 @@
 AllCops:
-  Rails:
-    Enabled: true
-  Excludes:
+  Exclude:
     - db/**
     - config/**/**
 Metrics/LineLength:

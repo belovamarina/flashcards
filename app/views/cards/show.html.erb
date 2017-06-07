@@ -1,13 +1,16 @@
-<div class="container">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= @card.original_text %></h3>
-      <small><%= @card.review_date.strftime('%d/%m/%Y') %></small>
+<div class="row">
+  <div class="container col-md-4 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @card.original_text %></h3>
+        <small><%= @card.review_date.strftime('%d/%m/%Y') %></small>
+      </div>
+      <div class="panel-body">
+        <%= image_tag @card.image.url if @card.image? %>
+      </div>
+      <div class="panel-footer"><%= @card.translated_text %></div>
     </div>
-    <div class="panel-body">
-      <%= @card.translated_text %>
-    </div>
+    <%= link_to 'Изменить', edit_card_path(@card) %> |
+    <%= link_to 'Удалить', @card, method: :delete, data: { confirm: 'Точно удалить?' } %>
   </div>
-  <%= link_to 'Изменить', edit_card_path(@card) %> |
-  <%= link_to 'Удалить', @card, method: :delete, data: { confirm: 'Точно удалить?' } %>
 </div>
