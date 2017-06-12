@@ -1,0 +1,33 @@
+<section id="container" class="container-fluid">
+  <h1>
+    <% if @deck.current? %>
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    <% end %>
+    <%= @deck.name %>
+  </h1>
+
+  <div class="row">
+    <% @deck.cards.each do |card| %>
+    <div class="container col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= link_to "#{card.original_text} - #{card.translated_text}", deck_card_path(@deck, card) %>
+          </h3>
+          <small><%= card.review_date.strftime('%d/%m/%Y') %></small>
+        </div>
+        <div class="panel-body">
+          <%= image_tag card.image.url if card.image? %>
+        </div>
+        <div class="panel-footer">
+          <%= link_to 'Изменить', edit_deck_card_path(@deck, card) %> |
+          <%= link_to 'Удалить', [@deck, card], method: :delete, data: { confirm: 'Точно удалить?' } %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= link_to 'Добавить карточки в колоду', new_deck_card_path(@deck, @deck.cards.build) %>
+</section>
+
+

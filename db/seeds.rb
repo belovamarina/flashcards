@@ -9,7 +9,8 @@ parse_words = ->(page) do
         original_text: original,
         translated_text: translated,
         review_date: date,
-        user_id: 1
+        user_id: 1,
+        deck_id: rand(1..3)
     )
   end
 end

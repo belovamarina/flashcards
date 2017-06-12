@@ -1,0 +1,30 @@
+<div class="container">
+  <% @decks.each do |deck| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="panel-title">
+              <% if deck.current? %>
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+              <% end %>
+              <%= link_to deck.name, deck_path(deck) %>
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <%= link_to 'Изменить', edit_deck_path(deck) %> |
+        <%= link_to 'Удалить', deck, method: :delete, data: { confirm: 'Точно удалить?' } %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      Всего колод: <%= @count %>
+      <%= link_to 'Добавить еще одну', new_deck_path %>
+    </div>
+  </div>
+</div>
