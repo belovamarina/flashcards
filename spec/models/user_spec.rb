@@ -18,8 +18,9 @@ RSpec.describe User, type: :model do
   end
 
   describe '#cards' do
-    context 'user has many cards' do
-      subject(:user) { create(:user_with_cards) }
+    context 'user has many decks with cards' do
+      subject(:user) { create(:user_with_decks) }
+      it { expect(user.decks).not_to be_empty }
       it { expect(user.cards).not_to be_empty }
     end
   end

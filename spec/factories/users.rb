@@ -10,11 +10,19 @@ FactoryGirl.define do
     salt { salt = 'asdasdastr4325234324sdfds' }
     crypted_password { Sorcery::CryptoProviders::BCrypt.encrypt('secret', salt) }
 
-    factory :user_with_cards do
-      transient { cards_count 5 }
+    factory :user_with_decks do
+      transient { decks_count 5 }
 
       after(:create) do |user, evaluator|
-        create_list(:card, evaluator.cards_count, user: user)
+        create_list(:deck_with_cards, evaluator.decks_count, user: user)
+      end
+    end
+
+    factory :user_with_noncurrent_decks do
+      transient { decks_count 5 }
+
+      after(:create) do |user, evaluator|
+        create_list(:noncurrent_deck_with_cards, evaluator.decks_count, user: user)
       end
     end
   end
