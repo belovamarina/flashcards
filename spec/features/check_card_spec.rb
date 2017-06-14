@@ -6,14 +6,15 @@ RSpec.feature 'Card check', type: :feature do
   scenario 'user see random card from current deck on home page' do
     visit root_path
     text = page.find(:xpath, "//h3[@class='panel-title']").text
-    deck = user.decks.current.first
+    deck = user.decks.first
+    user.update(current_deck_id: deck.id)
     expect(deck.cards.needed_to_review.pluck(:translated_text)).to include(text)
   end
 
   scenario 'user see random card (only noncurrent decks) on home page' do
     visit root_path
     text = page.find(:xpath, "//h3[@class='panel-title']").text
-    user.decks.update_all(status: 'noncurrent')
+    user.update(current_deck_id: nil)
     expect(user.cards.needed_to_review.pluck(:translated_text)).to include(text)
   end
 

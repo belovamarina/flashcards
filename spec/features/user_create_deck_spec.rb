@@ -7,7 +7,7 @@ RSpec.feature 'User create deck', type: :feature do
     visit new_deck_path
     within(:xpath, "//form[@id='new_deck']") do
       fill_in 'Имя колоды', with: 'test'
-      check 'deck_status'
+      check 'status_current'
       click_button('Создать')
     end
 
