@@ -71,7 +71,7 @@ class CardsController < ApplicationController
   end
 
   def check_user
-    return if current_user == @card.deck.user
+    return if current_user.cards.exists?(@card.id)
     render status: :forbidden, plain: 'Вам сюда нельзя'
   end
 end

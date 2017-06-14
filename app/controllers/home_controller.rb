@@ -1,11 +1,10 @@
 class HomeController < ApplicationController
   def index
     return unless current_user
-    deck = current_user.decks.current.first
-    if deck.present?
-      @random_card = deck.cards.needed_to_review.order('RANDOM()').first
-    else
-      @random_card = current_user.cards.needed_to_review.order('RANDOM()').first
-    end
+    @random_card = if Deck.exists?(current_user.current_deck_id)
+                     Deck.find(current_user.current_deck_id).cards.needed_to_review.order('RANDOM()').first
+                   else
+                     current_user.cards.needed_to_review.order('RANDOM()').first
+                   end
   end
 end

@@ -1,10 +1,9 @@
 <%= simple_form_for deck, html: { class: 'form-group'} do |f| %>
     <%= f.input :name, label: 'Имя колоды', input_html: { class: 'form-control' } %>
 
-    <%= f.input :status, as: :boolean,
-                checked_value: 'current',
-                unchecked_value: 'noncurrent',
-                label: 'Сделать колоду текущей?' %>
+    <%= simple_fields_for :status do |o| %>
+        <%= o.input :current, as: :boolean, label: 'Сделать колоду текущей?' %>
+    <% end %>
 
     <%= f.button :submit, deck.new_record? ? 'Создать' : 'Изменить' %>
 <% end %>

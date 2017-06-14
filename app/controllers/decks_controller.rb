@@ -16,6 +16,7 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.build(deck_params)
     if @deck.save
+      @deck.user.update(current_deck_id: @deck.id) if checkbox_params[:current]
       redirect_to @deck
     else
       render :new
@@ -26,6 +27,7 @@ class DecksController < ApplicationController
 
   def update
     if @deck.update(deck_params)
+      @deck.user.update(current_deck_id: @deck.id) if checkbox_params[:current]
       redirect_to @deck
     else
       render :edit
@@ -44,11 +46,15 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:name, :status)
+    params.require(:deck).permit(:name)
+  end
+
+  def checkbox_params
+    params.require(:status).permit(:current)
   end
 
   def check_user
-    return if current_user == @deck.user
+    return if current_user.decks.exists?(@deck.id)
     render status: :forbidden, plain: 'Вам сюда нельзя'
   end
 end
