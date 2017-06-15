@@ -1,4 +1,4 @@
 <div class="container">
   <h2>Изменить карточку</h2>
-  <%= render 'form', card: @card %>
+  <%= render 'form', card: @card, url: deck_card_path(@card.deck, @card) %>
 </div>

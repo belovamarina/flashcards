@@ -1,0 +1,6 @@
+<div class="container">
+  <h2>Изменить колоду</h2>
+  <%= render 'form', deck: @deck %>
+
+  <%= link_to 'Добавить карточки в колоду', new_deck_card_path(@deck, @deck.cards.build) %>
+</div>

@@ -8,8 +8,7 @@ parse_words = ->(page) do
     Card.create(
         original_text: original,
         translated_text: translated,
-        review_date: date,
-        user_id: 1
+        review_date: date
     )
   end
 end

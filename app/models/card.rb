@@ -4,7 +4,7 @@ class Card < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  belongs_to :user
+  belongs_to :deck
 
   scope :needed_to_review, -> { where('review_date <= ?', Date.today) }
 

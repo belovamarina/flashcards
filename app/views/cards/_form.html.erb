@@ -1,8 +1,9 @@
-<%= simple_form_for card, html: { class: 'form-group'} do |f| %>
+<%= simple_form_for card, url: url, html: { class: 'form-group'} do |f| %>
+    <%= f.hidden_field :deck_id, value: @deck.id %>
     <%= f.input :original_text, label: 'Оригинальный текст', input_html: { class: 'form-control' } %>
     <%= f.input :translated_text, label: 'Перевод', input_html: { class: 'form-control' } %>
     <%= f.input :review_date, as: :date, label: 'Дата пересмотра', selected: Date.today + 3.days %>
     <%= f.input :image, as: :file, label: 'Загрузите картинку', input_html: { class: 'form-control' } %>
     <%= f.input :remote_image_url, label: 'Или укажите ссылку', input_html: { class: 'form-control' } %>
-    <%= f.button :submit, card.new_record? ? 'Создать' : 'Изменить' %>
+    <%= f.button :submit, 'Сохранить' %>
 <% end %>

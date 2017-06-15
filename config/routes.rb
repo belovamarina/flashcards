@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :cards
+  resources :decks do
+    resources :cards
+  end
+
   post '/check_card', to: 'cards#check_card'
 
   resources :users
