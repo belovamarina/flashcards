@@ -20,6 +20,6 @@ RSpec.feature 'User create and edit deck', type: :feature do
     end
 
     expect(page).to have_content 'test1'
-    expect(page).to have_xpath "//span[@class='glyphicon glyphicon-ok']"
+    expect(page).to have_xpath "//i[@class='fa fa-check-square-o fa-2x']"
   end
 end
