@@ -32,11 +32,11 @@ RSpec.describe Card, type: :model do
     end
   end
 
-  describe '#process_success_review' do
+  describe '#success_review' do
     let(:card) { create(:card) }
 
     context 'when success reviews' do
-      subject { card.process_success_review }
+      subject { card.success_review }
 
       it 'increase success reviews' do
         subject
@@ -50,7 +50,7 @@ RSpec.describe Card, type: :model do
 
     context 'when fail first time' do
       before do
-        card.process_fail_review
+        card.fail_review
       end
 
       it 'not decrease success reviews if it == 0' do
@@ -62,14 +62,14 @@ RSpec.describe Card, type: :model do
       end
 
       it 'data review not changes' do
-        expect { card.process_fail_review }.to_not change { card.review_date }
+        expect { card.fail_review }.to_not change { card.review_date }
       end
     end
 
     context 'when fail 3 times after success' do
       before do
-        3.times { card.process_success_review }
-        3.times { card.process_fail_review }
+        3.times { card.success_review }
+        3.times { card.fail_review }
       end
 
       it 'decrease success from 3 to 2' do

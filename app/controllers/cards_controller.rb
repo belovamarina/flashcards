@@ -42,11 +42,11 @@ class CardsController < ApplicationController
     card = current_user.cards.find(card_params[:card_id])
 
     if card.correct_translate?(card_params[:original_text])
-      card.process_success_review
+      card.success_review
       redirect_to root_path,
                   notice: "Правильно, в следующий раз карта появится: #{card.review_date.strftime('%d/%m/%Y')}"
     else
-      card.process_fail_review
+      card.fail_review
       redirect_to root_path, alert: 'Неправильно'
     end
   end

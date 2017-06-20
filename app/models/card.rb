@@ -19,13 +19,13 @@ class Card < ApplicationRecord
     word.strip.casecmp(original_text.strip).zero?
   end
 
-  def process_success_review
+  def success_review
     self.success_reviews += 1 unless success_reviews == INTERVALS.count
     self.fail_reviews = 0
     update(review_date: INTERVALS[success_reviews].from_now)
   end
 
-  def process_fail_review
+  def fail_review
     self.fail_reviews += 1
 
     if (fail_reviews % 3).zero?
