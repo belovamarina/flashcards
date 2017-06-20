@@ -6,11 +6,34 @@ class Card < ApplicationRecord
 
   belongs_to :deck
 
-  scope :needed_to_review, -> { where('review_date <= ?', Date.today) }
+  scope :needed_to_review, -> { where('review_date <= ?', Time.now) }
+
+  INTERVALS = { 0 => 0.hours,
+                1 => 12.hours,
+                2 => 3.days,
+                3 => 7.days,
+                4 => 14.days,
+                5 => 1.month }.freeze
 
   def correct_translate?(word)
-    return unless word.strip.casecmp(original_text.strip).zero?
-    update(review_date: 3.days.from_now)
+    word.strip.casecmp(original_text.strip).zero?
+  end
+
+  def success_review
+    self.success_reviews += 1 unless success_reviews == INTERVALS.count
+    self.fail_reviews = 0
+    update(review_date: INTERVALS[success_reviews].from_now)
+  end
+
+  def fail_review
+    self.fail_reviews += 1
+
+    if (fail_reviews % 3).zero?
+      self.success_reviews -= 1 unless success_reviews.zero?
+      update(review_date: INTERVALS[success_reviews].from_now)
+    else
+      update(review_date: Time.now)
+    end
   end
 
   private
