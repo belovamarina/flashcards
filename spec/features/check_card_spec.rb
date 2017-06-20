@@ -27,7 +27,7 @@ RSpec.feature 'Card check', type: :feature do
       click_button('Проверить')
     end
 
-    expect(page).to have_content 'Правильно'
+    expect(page).to have_content "Правильно, в следующий раз карта появится: #{12.hours.from_now.strftime('%d/%m/%Y')}"
   end
 
   scenario 'user fill in wrong word' do

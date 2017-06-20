@@ -2,6 +2,8 @@ FactoryGirl.define do
   factory :card do
     original_text 'factory'
     translated_text 'фабрика'
+    success_reviews 0
+    fail_reviews 0
     review_date { Date.today }
     deck
   end
