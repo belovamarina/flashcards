@@ -1,0 +1,37 @@
+engines:
+  rubocop:
+    enabled: true
+    checks:
+      Rubocop/Metrics/ClassLength:
+        enabled: false
+      Style/StringLiterals:
+        enabled: false
+      Metrics/LineLength:
+        enabled: false
+      Style/FrozenStringLiteralComment:
+        enabled: false
+      Documentation:
+        enabled: false
+  brakeman:
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: false
+  duplication:
+    enabled: true
+    config:
+      languages:
+        ruby
+        javascript
+ratings:
+  paths:
+  - app/**
+  - lib/**
+  - "**.rb"
+  - "**.go"
+exclude_paths:
+- spec/**/*
+- "**/vendor/**/*"
+- "**/**/**/bootstrap.css"
+- "**/**/**/bootstrap.js"

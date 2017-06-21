@@ -41,10 +41,15 @@ class CardsController < ApplicationController
   def check_card
     card = current_user.cards.find(card_params[:card_id])
 
-    if card.correct_translate?(card_params[:original_text])
+    case card.compare(card_params[:original_text])
+    when 0
       card.success_review
       redirect_to root_path,
                   notice: "Правильно, в следующий раз карта появится: #{card.review_date.strftime('%d/%m/%Y')}"
+    when 1..2
+      card.success_review
+      redirect_to root_path,
+                  notice: "Возможно, вы опечатались: #{card_params[:original_text]} вместо #{card.original_text}"
     else
       card.fail_review
       redirect_to root_path, alert: 'Неправильно'
