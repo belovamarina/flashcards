@@ -17,18 +17,22 @@ RSpec.describe Card, type: :model do
     end
   end
 
-  describe '#correct_translate?' do
+  describe '#compare' do
     let(:card) { create(:card) }
 
     context 'when checking correct word' do
-      subject { card.correct_translate?(' Factory') }
-      it { is_expected.to be_truthy }
-      it { expect(card.review_date).to be { 3.days.from_now } }
+      subject { card.compare(' Factory') }
+      it { is_expected.to be(0) }
+    end
+
+    context 'when checking correct word with mistape' do
+      subject { card.compare(' Fcatory') }
+      it { is_expected.to be < 3 }
     end
 
     context 'when checking wrong word' do
-      subject { card.correct_translate?('cat') }
-      it { is_expected.to be_falsey }
+      subject { card.compare('cat') }
+      it { is_expected.to be > 2 }
     end
   end
 
