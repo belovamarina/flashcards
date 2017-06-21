@@ -22,8 +22,8 @@ engines:
     enabled: true
     config:
       languages:
-        ruby
-        javascript
+        ruby:
+          mass_threshold: 18
 ratings:
   paths:
   - app/**
@@ -32,6 +32,7 @@ ratings:
   - "**.go"
 exclude_paths:
 - spec/**/*
+- config/**/*
 - "**/vendor/**/*"
 - "**/**/**/bootstrap.css"
 - "**/**/**/bootstrap.js"
