@@ -15,8 +15,10 @@ class Card < ApplicationRecord
                 4 => 14.days,
                 5 => 1.month }.freeze
 
-  def correct_translate?(word)
-    word.strip.casecmp(original_text.strip).zero?
+  def compare(word)
+    user_word = word.strip.downcase
+    original_word = original_text.strip.downcase
+    DamerauLevenshtein.distance(user_word, original_word)
   end
 
   def success_review

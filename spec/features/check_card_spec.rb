@@ -27,7 +27,19 @@ RSpec.feature 'Card check', type: :feature do
       click_button('Проверить')
     end
 
-    expect(page).to have_content "Правильно, в следующий раз карта появится: #{12.hours.from_now.strftime('%d/%m/%Y')}"
+    expect(page).to have_content 'Правильно'
+  end
+
+  scenario 'user fill in correct word with mistape' do
+    visit root_path
+    text = page.find(:xpath, "//h3[@class='panel-title']").text
+
+    within(:xpath, "//form[@class='simple_form card']") do
+      fill_in ' Помните перевод?', with: Card.find_by(translated_text: text).original_text + 'a'
+      click_button('Проверить')
+    end
+
+    expect(page).to have_content 'Правильно'
   end
 
   scenario 'user fill in wrong word' do
