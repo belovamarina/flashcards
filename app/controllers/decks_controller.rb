@@ -44,7 +44,7 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:name, user_attributes: [:current_deck_id, :id])
+    params.require(:deck).permit(:name, user_attributes: %i[current_deck_id id])
   end
 
   def check_user

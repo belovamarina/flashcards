@@ -8,7 +8,6 @@ RSpec.describe NotificationsMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to match(user.email)
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq([ENV['EMAIL']])
     end
 
     it 'renders the body' do
