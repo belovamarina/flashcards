@@ -4,5 +4,3 @@ services:
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database flashcards_test;' -U postgres
-env:
-  - EMAIL=test@email.ru
