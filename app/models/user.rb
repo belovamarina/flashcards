@@ -23,11 +23,7 @@ class User < ApplicationRecord
     end
   end
 
-  private
-
-  def users_with_pending_cards
-    with_current_deck = User.joins(:current_deck, :cards).where('cards.review_date <= ?', Time.now)
-    without_current_deck = User.where(current_deck_id: 0).joins(:cards).where('cards.review_date <= ?', Time.now)
-    (with_current_deck + without_current_deck).uniq
+  def self.users_with_pending_cards
+    joins(:cards).where('review_date <= ?', Time.now).distinct
   end
 end

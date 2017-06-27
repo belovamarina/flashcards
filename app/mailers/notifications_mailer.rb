@@ -1,5 +1,5 @@
 class NotificationsMailer < ApplicationMailer
-  default from: ENV['EMAIL']
+  default from: 'rubyonrails4@ya.ru'
 
   def pending_cards(user)
     @user = user
