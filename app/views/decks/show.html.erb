@@ -20,14 +20,14 @@
           <%= image_tag card.image.url if card.image? %>
         </div>
         <div class="panel-footer">
-          <%= link_to 'Изменить', edit_deck_card_path(@deck, card) %> |
-          <%= link_to 'Удалить', [@deck, card], method: :delete, data: { confirm: 'Точно удалить?' } %>
+          <%= link_to t('common.edit'), edit_deck_card_path(@deck, card) %> |
+          <%= link_to t('common.delete'), [@deck, card], method: :delete, data: { confirm: t('common.confirm') } %>
         </div>
       </div>
     </div>
     <% end %>
   </div>
-  <%= link_to 'Добавить карточки в колоду', new_deck_card_path(@deck, @deck.cards.build) %>
+  <%= link_to t('.add_cards'), new_deck_card_path(@deck, @deck.cards.build) %>
 </section>
 
 

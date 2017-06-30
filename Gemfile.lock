@@ -103,6 +103,7 @@ GEM
     formatador (0.2.5)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    http_accept_language (2.1.0)
     i18n (0.8.1)
     ipaddress (0.8.3)
     jbuilder (2.6.4)
@@ -272,6 +273,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails (~> 4.0)
   fog-aws
+  http_accept_language
   jbuilder (~> 2.5)
   jquery-rails
   launchy

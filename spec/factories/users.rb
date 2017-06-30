@@ -5,6 +5,7 @@ FactoryGirl.define do
 
   factory :user do
     email
+    locale 'en'
     password 'secret'
     password_confirmation 'secret'
     salt { salt = 'asdasdastr4325234324sdfds' }
@@ -30,6 +31,16 @@ FactoryGirl.define do
   factory :bad_user, class: User do
     email 'abcd'
     password '1234'
+    locale 'en'
     password_confirmation ''
+  end
+
+  factory :user_ru, class: User do
+    email
+    locale 'ru'
+    password 'secret'
+    password_confirmation 'secret'
+    salt { salt = 'asdasdastr4325234324sdfds' }
+    crypted_password { Sorcery::CryptoProviders::BCrypt.encrypt('secret', salt) }
   end
 end

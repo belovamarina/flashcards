@@ -20,5 +20,13 @@
     <% end %>
 
     <%= yield %>
+  <footer>
+    <% if current_user %>
+        <%= link_to 'EN', user_path(current_user, user: { locale: 'en' }), method: :put %> |
+        <%= link_to 'RU', user_path(current_user, user: { locale: 'ru' }), method: :put %>
+    <% else %>
+      <%= link_to 'EN', { lang: 'en' } %> | <%= link_to 'RU', { lang: 'ru' } %>
+    <% end %>
+  </footer>
   </body>
 </html>

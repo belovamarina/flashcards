@@ -10,7 +10,7 @@
       </div>
       <div class="panel-footer"><%= @card.translated_text %></div>
     </div>
-    <%= link_to 'Изменить', edit_deck_card_path(@card.deck, @card) %> |
-    <%= link_to 'Удалить', [@card.deck, @card], method: :delete, data: { confirm: 'Точно удалить?' } %>
+    <%= link_to t('common.edit'), edit_deck_card_path(@card.deck, @card) %> |
+    <%= link_to t('common.delete'), [@card.deck, @card], method: :delete, data: { confirm: t('common.confirm') } %>
   </div>
 </div>

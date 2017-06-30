@@ -1,1 +1,2 @@
-<%= link_to 'Удалить', @user, method: :delete, data: { confirm: 'Точно удалить ваш профиль?' } %>
+<%= link_to t('default.delete'), @user, method: :delete, data: { confirm: t('default.confirm') } %>
+<%= link_to t('default.edit'), edit_user_path(@user) %>

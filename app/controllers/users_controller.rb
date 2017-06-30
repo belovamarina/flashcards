@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user
+      redirect_to :back
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id, :locale)
   end
 
   def set_user
@@ -45,8 +45,7 @@ class UsersController < ApplicationController
   end
 
   def check_user
-    unless current_user == @user
-      render status: :forbidden, text: 'Вам сюда нельзя'
-    end
+    return if current_user == @user
+    render status: :forbidden, text: 'Вам сюда нельзя'
   end
 end

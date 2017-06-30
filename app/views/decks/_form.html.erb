@@ -1,11 +1,11 @@
 <%= simple_form_for deck, html: { class: 'form-group'} do |f| %>
-    <%= f.input :name, label: 'Имя колоды', input_html: { class: 'form-control' } %>
+    <%= f.input :name, label: t('.deck_name'), input_html: { class: 'form-control' } %>
 
     <%= f.simple_fields_for :user  do |o| %>
-        <%= o.input :current_deck_id, as: :boolean, label: 'Сделать колоду текущей?',
+        <%= o.input :current_deck_id, as: :boolean, label: t('.current_deck'),
             checked_value: deck.id,
             unchecked_value: 0  %>
     <% end %>
 
-    <%= f.button :submit, deck.new_record? ? 'Создать' : 'Изменить' %>
+    <%= f.button :submit, deck.new_record? ? t('common.create') : t('common.edit') %>
 <% end %>

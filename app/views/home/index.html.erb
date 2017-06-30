@@ -1,9 +1,9 @@
 <section id="container" class="container-fluid">
-  <h1>Флэшкарточкер</h1>
+  <h1><%= t('.title') %></h1>
 
   <section>
     <p style="font-size: 22px;">
-      Первый в мире удобный менеджер флеш-карточек. Именно так.
+      <%= t('.greeting') %>
     </p>
   </section>
 
@@ -19,9 +19,9 @@
         </div>
       </div>
       <%= simple_form_for :card, { url: '/check_card' } do |f| %>
-          <%= f.input :original_text, label: 'Помните перевод?', input_html: { class: 'form-control' } %>
+          <%= f.input :original_text, label: t('.question'), input_html: { class: 'form-control' } %>
           <%= f.hidden_field :card_id, value: @random_card.id %>
-          <%= f.button :submit, 'Проверить' %>
+          <%= f.button :submit, t('.button') %>
       <% end %>
     </div>
   <% end %>

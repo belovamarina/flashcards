@@ -6,10 +6,10 @@ RSpec.feature 'User create cards in the deck', type: :feature do
   scenario 'user add cards' do
     visit new_deck_card_path(user.decks.first)
     within(:xpath, "//form[@id='new_card']") do
-      fill_in ' Оригинальный текст', with: 'test'
-      fill_in ' Перевод', with: ' Tест'
+      fill_in 'card[original_text]', with: 'test'
+      fill_in 'card[translated_text]', with: ' Tест'
       attach_file 'card_image', "#{::Rails.root}/spec/support/30zvo.jpg"
-      click_button('Сохранить')
+      click_button('Save')
     end
     expect(page).to have_content 'test'
     expect(page).to have_content { 3.days.from_now }

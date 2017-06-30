@@ -1,0 +1,103 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  common:
+    alert_login: 'Пожалуйста, войдите'
+    edit: 'Изменить'
+    create: 'Создать'
+    delete: 'Удалить'
+    confirm: 'Точно удалить?'
+  home:
+    index:
+      title: 'Флэшкарточкер'
+      greeting: 'Первый в мире удобный менеджер флеш-карточек. Именно так.'
+      question: 'Помните перевод?'
+      button: 'Проверить'
+  cards:
+    check_card:
+      success: "Правильно! Ваш ответ: %{user_answer}, и правильный ответ: %{original}"
+      alert: 'Неправильно'
+    index:
+      total_count: 'Всего карточек'
+    edit:
+      change_card: 'Изменить карточку'
+    new:
+      new_card: 'Создать новую карточку'
+    form:
+      original: 'Оригинальный текст'
+      translate: 'Перевод'
+      review: 'Дата пересмотра'
+      upload_image: 'Загрузите картинку'
+      link_image: 'Или укажите ссылку'
+      button: 'Сохранить'
+  decks:
+    form:
+      deck_name: 'Имя колоды'
+      current_deck: 'Сделать колоду текущей?'
+    edit:
+      edit_deck: 'Изменить колоду'
+      add_cards: 'Добавить карточки в колоду'
+    index:
+      decks_count: 'Всего колод: '
+      add_deck: 'Добавить еще одну'
+    new:
+      create_deck: 'Создать новую колоду'
+    show:
+      add_cards: 'Добавить карточки в колоду'
+  layouts:
+    navbar:
+      main: 'Главная'
+      decks: 'Мои колоды карт'
+      add_deck: 'Добавить колоду'
+      login: 'Войти'
+      login_facebook: 'Войти через Facebook'
+      signup: 'Зарегистрироваться'
+      logout: 'Выйти'
+      change_profile: 'Изменить профиль'
+  oauths:
+    callback:
+      notice: "Вы вошли через %{provider}!"
+      alert: "Не удалось войти через %{provider} - %{error}!"
+  user_sessions:
+    form:
+      email: 'Ваша почта'
+      password: 'Пароль'
+      login: 'Войти'
+    create:
+      success: 'Успешно'
+      alert: 'Неправильные почта и/или пароль'
+    new:
+      login: 'Войти'
+    destroy:
+      logout: 'Вы вышли'
+  users:
+    form:
+      email: 'Ваша почта'
+      password: 'Введите пароль'
+      password_confirm: 'И еще раз'
+      lang: 'Ваш язык'
+  date:
+    month_names: [~, 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+    order:
+     - :day
+     - :month
+     - :year

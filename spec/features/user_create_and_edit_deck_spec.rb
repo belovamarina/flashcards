@@ -6,17 +6,17 @@ RSpec.feature 'User create and edit deck', type: :feature do
   scenario 'user create new deck' do
     visit new_deck_path
     within(:xpath, "//form[@class='simple_form form-group']") do
-      fill_in 'Имя колоды', with: 'test'
-      click_button('Создать')
+      fill_in 'deck[name]', with: 'test'
+      click_button('Save')
     end
 
     expect(page).to have_content 'test'
 
     visit edit_deck_path(user.decks.first.id)
     within(:xpath, "//form[@class='simple_form form-group']") do
-      fill_in 'Имя колоды', with: 'test1'
+      fill_in 'deck[name]', with: 'test1'
       check 'deck_user_attributes_current_deck_id'
-      click_button('Изменить')
+      click_button('Edit')
     end
 
     expect(page).to have_content 'test1'

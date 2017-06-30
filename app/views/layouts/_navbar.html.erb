@@ -14,9 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'Главная', root_path %></li>
-        <li><%= link_to 'Мои колоды карт', decks_path %></li>
-        <li><%= link_to 'Добавить колоду', new_deck_path %></li>
+        <li><%= link_to t('.main'), root_path %></li>
+        <li><%= link_to t('.decks'), decks_path %></li>
+        <li><%= link_to t('.add_deck'), new_deck_path %></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -26,14 +26,14 @@
                 <%= current_user.email %><span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to 'Выйти', :logout, method: :post, class: 'navbar-link pull-right' %></li>
-                <li><%= link_to 'Изменить профиль', edit_user_path(current_user.id), class: 'navbar-link pull-right' %></li>
+                <li><%= link_to t('.logout'), :logout, method: :post, class: 'navbar-link pull-right' %></li>
+                <li><%= link_to t('.change_profile'), edit_user_path(current_user.id), class: 'navbar-link pull-right' %></li>
               </ul>
             </li>
           <% else %>
-              <li><%= link_to 'Войти', :login, class: 'navbar-link' %></li>
-              <li><%= link_to 'Войти через Facebook', auth_at_provider_path(provider: :facebook) %></li>
-              <li><%= link_to 'Зарегистрироваться', :signup, class: 'navbar-link' %></li>
+              <li><%= link_to t('.login'), :login, class: 'navbar-link' %></li>
+              <li><%= link_to t('.login_facebook'), auth_at_provider_path(provider: :facebook) %></li>
+              <li><%= link_to t('.signup'), :signup, class: 'navbar-link' %></li>
           <% end %>
           </ul>
     </div><!-- /.navbar-collapse -->
