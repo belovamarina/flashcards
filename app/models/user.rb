@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+  validates :locale, inclusion: { in: %w(en ru), message: "%{value} is not a valid lang" }
 
   has_many :decks, dependent: :destroy
   has_many :cards, through: :decks, dependent: :destroy

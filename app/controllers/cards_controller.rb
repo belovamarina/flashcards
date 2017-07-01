@@ -43,10 +43,11 @@ class CardsController < ApplicationController
 
     if card.compare(card_params[:original_text]) < 3
       card.success_review
-      redirect_to root_path, notice: "Правильно! Ваш ответ: #{card_params[:original_text]}, и правильный ответ: #{card.original_text}"
+      redirect_to root_path,
+                  notice: t('.success', user_answer: card_params[:original_text], original: card.original_text)
     else
       card.fail_review
-      redirect_to root_path, alert: 'Неправильно'
+      redirect_to root_path, alert: t('.alert')
     end
   end
 

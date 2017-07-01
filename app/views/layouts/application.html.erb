@@ -20,5 +20,14 @@
     <% end %>
 
     <%= yield %>
+  <footer>
+    <% I18n.available_locales.each do |locale| %>
+        <% if current_user %>
+            <%= link_to locale.upcase, user_path(current_user, user: { locale: locale }), method: :put %> |
+        <% else %>
+            <%= link_to locale.upcase, { lang: locale } %> |
+        <% end %>
+    <% end %>
+  </footer>
   </body>
 </html>

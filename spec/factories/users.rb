@@ -5,10 +5,15 @@ FactoryGirl.define do
 
   factory :user do
     email
+    locale 'en'
     password 'secret'
     password_confirmation 'secret'
     salt { salt = 'asdasdastr4325234324sdfds' }
     crypted_password { Sorcery::CryptoProviders::BCrypt.encrypt('secret', salt) }
+
+    factory :user_ru do
+      locale 'ru'
+    end
 
     factory :user_with_decks do
       transient { decks_count 5 }
@@ -30,6 +35,7 @@ FactoryGirl.define do
   factory :bad_user, class: User do
     email 'abcd'
     password '1234'
+    locale 'en'
     password_confirmation ''
   end
 end

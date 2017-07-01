@@ -20,4 +20,76 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  common:
+    alert_login: 'Please, login'
+    edit: 'Edit'
+    create: 'Save'
+    delete: 'Delete'
+    confirm: 'Are you sure?'
+  home:
+    index:
+      title: 'Flashcards'
+      greeting: "The world's first handy flash card manager. That's right."
+      question: 'Do you remember?'
+      button: 'Check it'
+  cards:
+    check_card:
+      success: "Correct! Your answer is: %{user_answer}, and right answer: %{original}"
+      alert: 'Wrong'
+    index:
+      total_count: 'Cards count'
+    edit:
+      change_card: 'Change card'
+    new:
+      new_card: 'Create new card'
+    form:
+      original: 'Original text'
+      translate: 'Translate'
+      review: 'Review date'
+      upload_image: 'Upload image'
+      link_image: 'Or paste link to image'
+      button: 'Save'
+  decks:
+    form:
+      deck_name: 'Deck name'
+      current_deck: 'Set current deck?'
+    edit:
+      edit_deck: 'Edit deck'
+      add_cards: 'Add cards to deck'
+    index:
+      decks_count: 'Decks count: '
+      add_deck: 'Add one more deck'
+    new:
+      create_deck: 'Create new deck'
+    show:
+      add_cards: 'Add cards to deck'
+  layouts:
+    navbar:
+      main: 'Main'
+      decks: 'My decks'
+      add_deck: 'Add deck'
+      login: 'Login'
+      login_facebook: 'Login with Facebook'
+      signup: 'Signup'
+      logout: 'Logout'
+      change_profile: 'Edit profile'
+  oauths:
+    callback:
+      notice: "You're logged in with %{provider}!"
+      alert: "Cannot logged in with %{provider} - %{error}!"
+  user_sessions:
+    form:
+      email: 'Your email'
+      password: 'Password'
+      login: 'Login'
+    create:
+      success: 'Success'
+      alert: 'Wrong email or/end password'
+    destroy:
+      logout: 'Good bye'
+  users:
+    form:
+      email: 'Your email'
+      password: 'Enter password'
+      password_confirm: 'And again'
+      lang: 'Your prefer language'

@@ -9,7 +9,7 @@ class OauthsController < ApplicationController
     provider = auth_params[:provider]
 
     if @user = login_from(provider)
-      redirect_back_or_to root_path, notice: "Вы вошли через #{provider.titleize}!"
+      redirect_back_or_to root_path, notice: t('.notice', provider: provider.titleize)
     else
       begin
         @user = create_from(provider)
@@ -17,9 +17,9 @@ class OauthsController < ApplicationController
 
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_back_or_to root_path, notice: "Вы вошли через #{provider.titleize}!"
+        redirect_back_or_to root_path, notice: t('.notice', provider: provider.titleize)
       rescue => e
-        redirect_back_or_to root_path, alert: "Не удалось войти через #{provider.titleize} - #{e.message}!"
+        redirect_back_or_to root_path, alert: t('.alert', provider: provider.titleize, error: e.message)
       end
     end
   end

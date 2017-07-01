@@ -23,11 +23,11 @@ RSpec.feature 'Card check', type: :feature do
     text = page.find(:xpath, "//h3[@class='panel-title']").text
 
     within(:xpath, "//form[@class='simple_form card']") do
-      fill_in ' Помните перевод?', with: Card.find_by(translated_text: text).original_text
-      click_button('Проверить')
+      fill_in 'card[original_text]', with: Card.find_by(translated_text: text).original_text
+      click_button('Check it')
     end
 
-    expect(page).to have_content 'Правильно'
+    expect(page).to have_content 'Correct'
   end
 
   scenario 'user fill in correct word with mistape' do
@@ -35,21 +35,21 @@ RSpec.feature 'Card check', type: :feature do
     text = page.find(:xpath, "//h3[@class='panel-title']").text
 
     within(:xpath, "//form[@class='simple_form card']") do
-      fill_in ' Помните перевод?', with: Card.find_by(translated_text: text).original_text + 'a'
-      click_button('Проверить')
+      fill_in 'card[original_text]', with: Card.find_by(translated_text: text).original_text + 'a'
+      click_button('Check it')
     end
 
-    expect(page).to have_content 'Правильно'
+    expect(page).to have_content 'Correct'
   end
 
   scenario 'user fill in wrong word' do
     visit root_path
 
     within(:xpath, "//form[@class='simple_form card']") do
-      fill_in ' Помните перевод?', with: 'wrong word'
-      click_button('Проверить')
+      fill_in 'card[original_text]', with: 'wrong word'
+      click_button('Check it')
     end
 
-    expect(page).to have_content 'Неправильно'
+    expect(page).to have_content 'Wrong'
   end
 end
