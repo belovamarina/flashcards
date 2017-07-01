@@ -21,11 +21,12 @@
 
     <%= yield %>
   <footer>
-    <% if current_user %>
-        <%= link_to 'EN', user_path(current_user, user: { locale: 'en' }), method: :put %> |
-        <%= link_to 'RU', user_path(current_user, user: { locale: 'ru' }), method: :put %>
-    <% else %>
-      <%= link_to 'EN', { lang: 'en' } %> | <%= link_to 'RU', { lang: 'ru' } %>
+    <% I18n.available_locales.each do |locale| %>
+        <% if current_user %>
+            <%= link_to locale.upcase, user_path(current_user, user: { locale: locale }), method: :put %> |
+        <% else %>
+            <%= link_to locale.upcase, { lang: locale } %> |
+        <% end %>
     <% end %>
   </footer>
   </body>
