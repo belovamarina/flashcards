@@ -21,6 +21,7 @@
       <%= simple_form_for :card, { url: '/check_card' } do |f| %>
           <%= f.input :original_text, label: t('.question'), input_html: { class: 'form-control' } %>
           <%= f.hidden_field :card_id, value: @random_card.id %>
+          <%= f.hidden_field :quality, value: 5 %>
           <%= f.button :submit, t('.button') %>
       <% end %>
     </div>

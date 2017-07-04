@@ -40,13 +40,14 @@ class CardsController < ApplicationController
 
   def check_card
     card = current_user.cards.find(card_params[:card_id])
+    supermemo = SuperMemo2.new(card, card_params[:quality])
 
     if card.compare(card_params[:original_text]) < 3
-      card.success_review
+      card.update(supermemo.remember_card)
       redirect_to root_path,
                   notice: t('.success', user_answer: card_params[:original_text], original: card.original_text)
     else
-      card.fail_review
+      card.update(supermemo.forgot_card)
       redirect_to root_path, alert: t('.alert')
     end
   end
@@ -69,7 +70,8 @@ class CardsController < ApplicationController
       :card_id,
       :image,
       :remote_image_url,
-      :deck_id
+      :deck_id,
+      :quality
     )
   end
 

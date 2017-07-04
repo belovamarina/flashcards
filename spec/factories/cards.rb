@@ -3,7 +3,8 @@ FactoryGirl.define do
     original_text 'factory'
     translated_text 'фабрика'
     success_reviews 0
-    fail_reviews 0
+    e_factor 2.5
+    interval 0
     review_date { Date.today }
     deck
   end
