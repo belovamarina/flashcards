@@ -186,6 +186,8 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    rollbar (2.15.0)
+      multi_json
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -285,6 +287,7 @@ DEPENDENCIES
   pry
   puma (~> 3.0)
   rails (~> 5.0.1)
+  rollbar
   rspec-rails (~> 3.5)
   rubocop
   sass-rails (~> 5.0)
