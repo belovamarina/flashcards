@@ -43,6 +43,7 @@ gem 'sorcery'
 gem 'whenever', require: false
 gem 'newrelic_rpm'
 gem 'rollbar'
+gem 'oj'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

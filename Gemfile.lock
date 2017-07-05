@@ -144,6 +144,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
+    oj (3.2.1)
     parser (2.4.0.0)
       ast (~> 2.2)
     pg (0.20.0)
@@ -283,6 +284,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mini_magick
   newrelic_rpm
+  oj
   pg (~> 0.18)
   pry
   puma (~> 3.0)
