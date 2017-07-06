@@ -88,14 +88,13 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address: 'smtp.yandex.ru',
-      port: 587,
-      domain: 'domain.of.sender.net',
-      authentication: 'plain',
-      user_name: ENV['EMAIL'],
-      password: ENV['EMAIL_PASSWORD'],
-      enable_starttls_auto: true
+      port: ENV['MAILGUN_SMTP_PORT'],
+      address: ENV['MAILGUN_SMTP_SERVER'],
+      user_name: ENV['MAILGUN_SMTP_LOGIN'],
+      password: ENV['MAILGUN_SMTP_PASSWORD'],
+      domain: 'appd0d53972250046c9a9b5479e8bc7ffab.mailgun.org',
+      authentication: :plain,
   }
-  config.action_mailer.default_url_options = { host: 'flashcards-for-you.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'appd0d53972250046c9a9b5479e8bc7ffab.mailgun.org' }
   config.action_mailer.raise_delivery_errors = true
 end
