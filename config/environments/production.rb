@@ -95,6 +95,6 @@ Rails.application.configure do
       domain: 'appd0d53972250046c9a9b5479e8bc7ffab.mailgun.org',
       authentication: :plain,
   }
-  config.action_mailer.default_url_options = { host: 'appd0d53972250046c9a9b5479e8bc7ffab.mailgun.org' }
+  config.action_mailer.default_url_options = { host: 'flashcards-for-you.herokuapp.com' }
   config.action_mailer.raise_delivery_errors = true
 end
