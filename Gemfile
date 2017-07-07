@@ -53,6 +53,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'launchy'
+  gem 'poltergeist'
   gem 'pry'
   gem 'rspec-rails', '~> 3.5'
   gem 'rubocop'
