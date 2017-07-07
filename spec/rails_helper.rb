@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 require 'capybara/rails'
+require 'capybara/poltergeist'
 require 'sorcery'
 require 'spec_helper'
 require 'rspec/rails'
@@ -12,6 +13,7 @@ require 'support/factory_girl'
 require 'support/sorcery'
 require 'support/database_cleaner'
 require 'support/login'
+require 'support/capybara_config'
 require 'carrierwave/test/matchers'
 
 # Add additional requires below this line. Rails is not loaded until this point!

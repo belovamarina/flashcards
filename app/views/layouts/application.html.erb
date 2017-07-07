@@ -4,20 +4,15 @@
     <title>Флэшкарточкер</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
-    <% if flash[:notice] %>
-      <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
-    <% end %>
 
-    <% if flash[:alert] %>
-      <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
-    <% end %>
+    <div class="flash-messages"><%= render 'layouts/flash' %></div>
 
     <%= yield %>
   <footer>

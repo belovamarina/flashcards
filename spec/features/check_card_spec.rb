@@ -18,7 +18,7 @@ RSpec.feature 'Card check', type: :feature do
     expect(user.cards.needed_to_review.pluck(:translated_text)).to include(text)
   end
 
-  scenario 'user fill in correct word' do
+  scenario 'user fill in correct word', js: true do
     visit root_path
     text = page.find(:xpath, "//h3[@class='panel-title']").text
 
@@ -30,7 +30,7 @@ RSpec.feature 'Card check', type: :feature do
     expect(page).to have_content 'Correct'
   end
 
-  scenario 'user fill in correct word with mistape' do
+  scenario 'user fill in correct word with mistape', js: true do
     visit root_path
     text = page.find(:xpath, "//h3[@class='panel-title']").text
 
@@ -42,7 +42,7 @@ RSpec.feature 'Card check', type: :feature do
     expect(page).to have_content 'Correct'
   end
 
-  scenario 'user fill in wrong word' do
+  scenario 'user fill in wrong word', js: true do
     visit root_path
 
     within(:xpath, "//form[@class='simple_form card']") do

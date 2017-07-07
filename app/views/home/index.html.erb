@@ -7,24 +7,5 @@
     </p>
   </section>
 
-  <div class="row">
-  <% if @random_card.present? %>
-    <div class="container col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= @random_card.translated_text %></h3>
-        </div>
-        <div class="panel-body">
-          <%= image_tag(@random_card.image.url, class: 'img-thumbnail') if @random_card.image? %>
-        </div>
-      </div>
-      <%= simple_form_for :card, { url: '/check_card' } do |f| %>
-          <%= f.input :original_text, label: t('.question'), input_html: { class: 'form-control' } %>
-          <%= f.hidden_field :card_id, value: @random_card.id %>
-          <%= f.hidden_field :quality, value: 5 %>
-          <%= f.button :submit, t('.button') %>
-      <% end %>
-    </div>
-  <% end %>
-  </div>
+  <%= render 'form', random_card: @random_card %>
 </section>

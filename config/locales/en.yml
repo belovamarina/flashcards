@@ -30,6 +30,7 @@ en:
     index:
       title: 'Flashcards'
       greeting: "The world's first handy flash card manager. That's right."
+    form:
       question: 'Do you remember?'
       button: 'Check it'
   cards:
