@@ -57,11 +57,11 @@ class CardsController < ApplicationController
 
   def set_next_random_card
     return unless current_user
-    if deck = current_user.current_deck
-      deck.cards.needed_to_review.order('RANDOM()').first
-    else
-      current_user.cards.needed_to_review.order('RANDOM()').first
-    end
+    @random_card = if deck = current_user.current_deck
+                     deck.cards.needed_to_review.order('RANDOM()').first
+                   else
+                     current_user.cards.needed_to_review.order('RANDOM()').first
+                   end
   end
 
   def set_card_for_check
