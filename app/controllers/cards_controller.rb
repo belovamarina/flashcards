@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_action :require_login
   before_action :set_card, :check_user, only: %i[show edit update destroy]
   before_action :set_deck, only: %i[new create edit update destroy]
-  before_action :set_random_card, only: :check_card
+  before_action :set_next_random_card, :set_card_for_check, only: :check_card
 
   def index
     @cards = current_user.cards
@@ -40,15 +40,14 @@ class CardsController < ApplicationController
   end
 
   def check_card
-    card = current_user.cards.find(card_params[:card_id])
-    supermemo = SuperMemo2.new(card, card_params[:quality])
+    supermemo = SuperMemo2.new(@card, card_params[:quality])
 
     respond_to do |format|
-      if card.compare(card_params[:original_text]) < 3
-        card.update(supermemo.remember_card)
-        format.js { flash.now[:notice] = t('.success', user_answer: card_params[:original_text], original: card.original_text) }
+      if @card.compare(card_params[:original_text]) < 3
+        @card.update(supermemo.remember_card)
+        format.js { flash.now[:notice] = t('.success', user_answer: card_params[:original_text], original: @card.original_text) }
       else
-        card.update(supermemo.forgot_card)
+        @card.update(supermemo.forgot_card)
         format.js { flash.now[:alert] = t('.alert') }
       end
     end
@@ -56,13 +55,17 @@ class CardsController < ApplicationController
 
   private
 
-  def set_random_card
+  def set_next_random_card
     return unless current_user
     if deck = current_user.current_deck
-       deck.cards.needed_to_review.order('RANDOM()').first
-     else
-       current_user.cards.needed_to_review.order('RANDOM()').first
-     end
+      deck.cards.needed_to_review.order('RANDOM()').first
+    else
+      current_user.cards.needed_to_review.order('RANDOM()').first
+    end
+  end
+
+  def set_card_for_check
+    @card = current_user.cards.find(card_params[:card_id])
   end
 
   def set_card
