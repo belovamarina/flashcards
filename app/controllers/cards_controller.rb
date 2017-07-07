@@ -1,8 +1,9 @@
 class CardsController < ApplicationController
+  include RandomCard
   before_action :require_login
   before_action :set_card, :check_user, only: %i[show edit update destroy]
   before_action :set_deck, only: %i[new create edit update destroy]
-  before_action :set_next_random_card, :set_card_for_check, only: :check_card
+  before_action :set_random_card, :set_card_for_check, only: :check_card
 
   def index
     @cards = current_user.cards
@@ -54,15 +55,6 @@ class CardsController < ApplicationController
   end
 
   private
-
-  def set_next_random_card
-    return unless current_user
-    @random_card = if deck = current_user.current_deck
-                     deck.cards.needed_to_review.order('RANDOM()').first
-                   else
-                     current_user.cards.needed_to_review.order('RANDOM()').first
-                   end
-  end
 
   def set_card_for_check
     @card = current_user.cards.find(card_params[:card_id])
