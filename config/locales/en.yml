@@ -33,37 +33,44 @@ en:
     form:
       question: 'Do you remember?'
       button: 'Check it'
-  cards:
-    check_card:
-      success: "Correct! Your answer is: %{user_answer}, and right answer: %{original}"
-      alert: 'Wrong'
-    index:
-      total_count: 'Cards count'
-    edit:
-      change_card: 'Change card'
-    new:
-      new_card: 'Create new card'
-    form:
-      original: 'Original text'
-      translate: 'Translate'
-      review: 'Review date'
-      upload_image: 'Upload image'
-      link_image: 'Or paste link to image'
-      button: 'Save'
-  decks:
-    form:
-      deck_name: 'Deck name'
-      current_deck: 'Set current deck?'
-    edit:
-      edit_deck: 'Edit deck'
-      add_cards: 'Add cards to deck'
-    index:
-      decks_count: 'Decks count: '
-      add_deck: 'Add one more deck'
-    new:
-      create_deck: 'Create new deck'
-    show:
-      add_cards: 'Add cards to deck'
+  dashboard:
+    cards:
+      check_card:
+        success: "Correct! Your answer is: %{user_answer}, and right answer: %{original}"
+        alert: 'Wrong'
+      index:
+        total_count: 'Cards count'
+      edit:
+        change_card: 'Change card'
+      new:
+        new_card: 'Create new card'
+      form:
+        original: 'Original text'
+        translate: 'Translate'
+        review: 'Review date'
+        upload_image: 'Upload image'
+        link_image: 'Or paste link to image'
+        button: 'Save'
+    decks:
+      form:
+        deck_name: 'Deck name'
+        current_deck: 'Set current deck?'
+      edit:
+        edit_deck: 'Edit deck'
+        add_cards: 'Add cards to deck'
+      index:
+        decks_count: 'Decks count: '
+        add_deck: 'Add one more deck'
+      new:
+        create_deck: 'Create new deck'
+      show:
+        add_cards: 'Add cards to deck'
+    users:
+      form:
+        email: 'Your email'
+        password: 'Enter password'
+        password_confirm: 'And again'
+        lang: 'Your prefer language'
   layouts:
     navbar:
       main: 'Main'
@@ -88,9 +95,3 @@ en:
       alert: 'Wrong email or/end password'
     destroy:
       logout: 'Good bye'
-  users:
-    form:
-      email: 'Your email'
-      password: 'Enter password'
-      password_confirm: 'And again'
-      lang: 'Your prefer language'

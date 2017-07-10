@@ -33,37 +33,44 @@ ru:
     form:
       question: 'Помните перевод?'
       button: 'Проверить'
-  cards:
-    check_card:
-      success: "Правильно! Ваш ответ: %{user_answer}, и правильный ответ: %{original}"
-      alert: 'Неправильно'
-    index:
-      total_count: 'Всего карточек'
-    edit:
-      change_card: 'Изменить карточку'
-    new:
-      new_card: 'Создать новую карточку'
-    form:
-      original: 'Оригинальный текст'
-      translate: 'Перевод'
-      review: 'Дата пересмотра'
-      upload_image: 'Загрузите картинку'
-      link_image: 'Или укажите ссылку'
-      button: 'Сохранить'
-  decks:
-    form:
-      deck_name: 'Имя колоды'
-      current_deck: 'Сделать колоду текущей?'
-    edit:
-      edit_deck: 'Изменить колоду'
-      add_cards: 'Добавить карточки в колоду'
-    index:
-      decks_count: 'Всего колод: '
-      add_deck: 'Добавить еще одну'
-    new:
-      create_deck: 'Создать новую колоду'
-    show:
-      add_cards: 'Добавить карточки в колоду'
+  dashboard:
+    cards:
+      check_card:
+        success: "Правильно! Ваш ответ: %{user_answer}, и правильный ответ: %{original}"
+        alert: 'Неправильно'
+      index:
+        total_count: 'Всего карточек'
+      edit:
+        change_card: 'Изменить карточку'
+      new:
+        new_card: 'Создать новую карточку'
+      form:
+        original: 'Оригинальный текст'
+        translate: 'Перевод'
+        review: 'Дата пересмотра'
+        upload_image: 'Загрузите картинку'
+        link_image: 'Или укажите ссылку'
+        button: 'Сохранить'
+    decks:
+      form:
+        deck_name: 'Имя колоды'
+        current_deck: 'Сделать колоду текущей?'
+      edit:
+        edit_deck: 'Изменить колоду'
+        add_cards: 'Добавить карточки в колоду'
+      index:
+        decks_count: 'Всего колод: '
+        add_deck: 'Добавить еще одну'
+      new:
+        create_deck: 'Создать новую колоду'
+      show:
+        add_cards: 'Добавить карточки в колоду'
+    users:
+      form:
+        email: 'Ваша почта'
+        password: 'Введите пароль'
+        password_confirm: 'И еще раз'
+        lang: 'Ваш язык'
   layouts:
     navbar:
       main: 'Главная'
@@ -90,12 +97,6 @@ ru:
       login: 'Войти'
     destroy:
       logout: 'Вы вышли'
-  users:
-    form:
-      email: 'Ваша почта'
-      password: 'Введите пароль'
-      password_confirm: 'И еще раз'
-      lang: 'Ваш язык'
   date:
     month_names: [~, 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
     order:
