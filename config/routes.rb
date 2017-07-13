@@ -1,17 +1,9 @@
 Rails.application.routes.draw do
-  get 'oauths/oauth'
-
-  get 'oauths/callback'
-
   root 'home#index'
 
-  resources :decks do
-    resources :cards
-  end
+  get 'oauths/oauth'
+  get 'oauths/callback'
 
-  post '/check_card', to: 'cards#check_card'
-
-  resources :users
   resources :user_sessions, only: [:create]
 
   get '/signup', to: 'users#new', as: :signup
@@ -20,6 +12,15 @@ Rails.application.routes.draw do
 
   get 'oauth/callback', to: 'oauths#callback' # for use with Github, Facebook
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
+
+  scope module: 'dashboard' do
+    resources :decks do
+      resources :cards
+    end
+    resources :users
+
+    post '/check_card', to: 'cards#check_card'
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
