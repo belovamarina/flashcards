@@ -14,6 +14,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def default_url(*)
+    ActionController::Base.helpers.asset_path([version_name, 'no-image.png'].compact.join('_'))
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -26,12 +30,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [360, 360]
   #
   # def scale(width, height)
-  #   # do something
+  #   do something
   # end
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [50, 50]
+    process resize_to_fit: [140, 140]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

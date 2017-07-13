@@ -4,11 +4,12 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"><img src="https://png.icons8.com/joker/ios7/25" title="Joker" width="25" height="25"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Flashcards</a>
+      <a class="navbar-brand" href="/"><!-- Cards icon by Icons8 -->
+        <img src="https://png.icons8.com/joker/ios7/25" title="Joker" width="25" height="25"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,22 +21,38 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-          <% if current_user %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <%= current_user.email %><span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to t('.logout'), :logout, method: :post, class: 'navbar-link pull-right' %></li>
-                <li><%= link_to t('.change_profile'), edit_user_path(current_user.id), class: 'navbar-link pull-right' %></li>
-              </ul>
-            </li>
-          <% else %>
-              <li><%= link_to t('.login'), :login, class: 'navbar-link' %></li>
-              <li><%= link_to t('.login_facebook'), auth_at_provider_path(provider: :facebook) %></li>
-              <li><%= link_to t('.signup'), :signup, class: 'navbar-link' %></li>
-          <% end %>
+        <% if current_user %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <%= current_user.email %><span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t('.logout'), :logout, method: :post, class: 'navbar-link pull-right' %></li>
+              <li><%= link_to t('.change_profile'), edit_user_path(current_user.id), class: 'navbar-link pull-right' %></li>
+            </ul>
+          </li>
+        <% else %>
+            <li><%= link_to t('.login'), :login, class: 'navbar-link' %></li>
+            <li><%= link_to t('.login_facebook'), auth_at_provider_path(provider: :facebook) %></li>
+            <li><%= link_to t('.signup'), :signup, class: 'navbar-link' %></li>
+        <% end %>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <%= I18n.locale.upcase %><span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% I18n.available_locales.each do |locale| %>
+              <% next if locale == I18n.locale %>
+              <% if current_user %>
+                <li><%= link_to locale.upcase, user_path(current_user, user: { locale: locale }), method: :put, class: 'navbar-link pull-right' %></li>
+              <% else %>
+                <li><%= link_to locale.upcase, { lang: locale }, class: 'navbar-link pull-right' %></li>
+              <% end %>
+            <% end %>
           </ul>
+        </li>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -21,8 +21,8 @@ RSpec.describe ImageUploader, type: :model do
   end
 
   context 'the thumb version' do
-    it 'scales down a landscape image to be fit to 50 * 50 pixels' do
-      expect(uploader.thumb).to be_no_larger_than(50, 50)
+    it 'scales down a landscape image to be fit to 140 * 140 pixels' do
+      expect(uploader.thumb).to be_no_larger_than(140, 140)
     end
   end
 

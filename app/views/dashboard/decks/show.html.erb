@@ -17,7 +17,7 @@
           <small><%= card.review_date.strftime('%d/%m/%Y') %></small>
         </div>
         <div class="panel-body">
-          <%= image_tag card.image.url if card.image? %>
+          <%= image_tag card.image.url %>
         </div>
         <div class="panel-footer">
           <%= link_to t('common.edit'), edit_deck_card_path(@deck, card) %> |
